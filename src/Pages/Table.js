@@ -9,7 +9,7 @@ class Table extends Component {
             peoples: [],
             nextPage: '',
             previousPage: ''
-        }
+        };
     }
 
     async componentDidMount(page = 1) {
@@ -26,10 +26,10 @@ class Table extends Component {
     }
 
     sortBy(name) {
-        let unsortArr = this.state.peoples.slice()
-        this.state.peoples.sort((a, b) => a[name] > b[name] ? 1 : -1)
-        if (JSON.stringify(unsortArr.map((m) => m[name])) === JSON.stringify(this.state.peoples.map((m) => m[name]))) {
-            this.state.peoples.reverse()
+        let unsortArr = this.state.peoples.slice();
+        this.state.peoples.sort((a, b) => a[name] > b[name] ? 1 : -1);
+        if ((unsortArr.map((m) => m[name])).toString() === (this.state.peoples.map((m) => m[name])).toString()) {
+            this.state.peoples.reverse();
         }
         this.setState({
             peoples: this.state.peoples
@@ -50,7 +50,7 @@ class Table extends Component {
 
             return b[name] - a[name]
         })
-        if (JSON.stringify(unsortArr.map((m) => m[name])) === JSON.stringify(this.state.peoples.map((m) => m[name]))) {
+        if ((unsortArr.map((m) => m[name])).toString() === (this.state.peoples.map((m) => m[name])).toString()) {
             this.state.peoples.reverse()
         }
 
@@ -69,13 +69,13 @@ class Table extends Component {
                 return 1
             }
 
-            let fakeA = a[name].replace('BBY', '')
-            let fakeB = b[name].replace('BBY', '')
+            let temporaryA = a[name].replace('BBY', '')
+            let temporaryB = b[name].replace('BBY', '')
 
-            return fakeB - fakeA
+            return temporaryB - temporaryA
         })
 
-        if (JSON.stringify(unsortArr.map((m) => m[name])) === JSON.stringify(this.state.peoples.map((m) => m[name]))) {
+        if ((unsortArr.map((m) => m[name])).toString() === (this.state.peoples.map((m) => m[name])).toString()) {
             this.state.peoples.reverse()
         }
 
